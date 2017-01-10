@@ -8,13 +8,6 @@ export class Lol extends Component {
   static defaultProps = {
     click: 0,
   }
-  static getInitialProps() {
-    return { props: 'plop' };
-  }
-  // constructor(props, context) {
-  //   super(props, context);
-  // }
-
   render() {
     return (
       <div>

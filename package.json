@@ -8,7 +8,8 @@
     "clean": "rimraf public/dist",
     "build": "yarn run clean && webpack --progress -p --config webpack.config.prod.js",
     "dev": "yarn run clean && webpack-dev-server --port 4000  --inline",
-    "dev:server": "yarn run clean && NODE_ENV=development node webpack-dev-server.babel.js",
+    "dev:server:file": "yarn run clean && NODE_ENV=development node webpack-dev-server.babel.js",
+    "dev:server": "yarn run clean && NODE_ENV=development node index.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -39,7 +40,9 @@
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-middleware": "^1.9.0",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-hot-middleware": "^2.15.0"
   },
   "dependencies": {
     "es6-promise": "^4.0.5",

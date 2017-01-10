@@ -7,7 +7,6 @@ var SRC_DIR = path.resolve(__dirname, 'public');
 var APP_DIR = path.resolve(__dirname, 'App/');
 var CSS_DIR = path.resolve(__dirname, 'public/css');
 
-// var extractFonts = new ExtractTextPlugin('fonts.min.css');
 var extractSass = new ExtractTextPlugin('main.min.css');
 var appExport = {
   devtool: 'cheap-module-source-map',
@@ -40,23 +39,14 @@ var appExport = {
             loaders: ['react-hot-loader','babel-loader'],
             compact: true,
           },
-          // {
-          //   test: /(font)*\.css$/,
-          //   loader: extractFonts.extract("css-loader")
-          // },
           {
             test: /\.scss$/,
-            loader: extractSass.extract("style-loader", "css-loader!sass-loader?includePaths[]=" + path.resolve(__dirname, "./src/css/") )
+            loader: extractSass.extract("style-loader", "css-loader!sass-loader?includePaths[]=" + path.resolve(__dirname, "./public/css/") )
           },
-          // {
-          //   test   : /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
-          //   loader : 'file-loader?publicPath=../&path=styles/fonts/[name]/&name=font-[name].[ext]'
-          // }
       ]
   },
   plugins: [
     new CommonsChunkPlugin({ name:  'main' }),
-    // extractFonts,
     extractSass,
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
@@ -80,4 +70,4 @@ var appExport = {
   ]
 };
 
-module.exports = [appExport];
+module.exports = appExport;

@@ -7,15 +7,16 @@ var SRC_DIR = path.resolve(__dirname, 'public');
 var APP_DIR = path.resolve(__dirname, 'App/');
 var CSS_DIR = path.resolve(__dirname, 'public/css');
 
-// var extractFonts = new ExtractTextPlugin('fonts.min.css');
 var extractSass = new ExtractTextPlugin('main.min.css');
 var appExport = {
   devtool: 'eval',
   entry: [
     APP_DIR + '/main.jsx',
     CSS_DIR + '/app.scss',
-    'webpack/hot/only-dev-server',
-    'webpack-dev-server/client?http://localhost:4000'
+    'webpack/hot/dev-server',
+    'webpack-hot-middleware/client'
+    // 'webpack/hot/only-dev-server',
+    // 'webpack-dev-server/client?http://localhost:3000'
   ],
   output: {
       // path: DIST_DIR,
@@ -29,10 +30,10 @@ var appExport = {
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
-    // "alias": {
-    //   "react": "preact-compat",
-    //   "react-dom": "preact-compat"
-    // }
+    "alias": {
+      "react": "preact-compat",
+      "react-dom": "preact-compat"
+    }
   },
   module: {
       loaders: [
@@ -41,24 +42,15 @@ var appExport = {
             include : APP_DIR,
               loaders: ['react-hot-loader','babel-loader'],
           },
-          // {
-          //   test: /(fonts)*\.scss$/,
-          //   loader: extractFonts.extract("css-loader!sass-loader")
-          // },
           {
             test: /\.scss$/,
-            loader: extractSass.extract("style-loader", "css-loader!sass-loader?includePaths[]=" + path.resolve(__dirname, "./src/css/") )
+            loader: extractSass.extract("style-loader", "css-loader!sass-loader?includePaths[]=" + path.resolve(__dirname, "./public/css/") )
           },
-          // {
-          //   test   : /\.(ttf|eot|svg|woff(2)?)?$/,
-          //   loader : `file-loader?publicPath=${SRC_DIR}/dist/&path=${SRC_DIR}/fonts/[name]/&name=font-[name].[ext]`
-          // }
       ]
   },
   plugins: [
     new CommonsChunkPlugin({ name:  'main' }),
     new webpack.HotModuleReplacementPlugin(),
-    // extractFonts,
     extractSass,
     new webpack.DefinePlugin({
       'process.env': {

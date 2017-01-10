@@ -10,14 +10,14 @@ const initLang = function initLang() {
       resources: {
         fr: {
           translation: {
-            hello: 'bonjour monde',
-            title: 'Exemple d\'utilisation d\'i18next avec React',
+            lol: 'aller sur Lol',
+            number_of_click: 'Nombre de click',
           },
         },
         en: {
           translation: {
-            hello: 'hello world',
-            title: 'Example of use i18next with React',
+            lol: 'go to Lol',
+            number_of_click: 'Number of click',
           },
         },
       },

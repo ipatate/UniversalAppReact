@@ -12,7 +12,7 @@ import initLang from '../../App/lib/i18n';
 import { configureStore } from '../../App/redux/store/configureStore';
 
 // method for init state from component
-import { gmInitComponentData } from './gmInitComponentData';
+import { gmInitAppData } from './gmInitAppData';
 // the shared route
 import routes from '../../App/Routes/routes';
 
@@ -28,7 +28,7 @@ const gmRenderReact = (req, res, next) => {
     return initLang()
     .then((i18n) => {
     // fetch all func for init the children components
-      return gmInitComponentData(store.dispatch, renderProps).then(() => {
+      return gmInitAppData(store.dispatch, renderProps).then(() => {
         let initialView = '';
         // render the string with react component mounted
         try {

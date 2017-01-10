@@ -3,6 +3,7 @@ import { translate } from 'react-i18next';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import * as Action from '../redux/actions/';
+import Header from './Header';
 
 export class Home extends Component {
   static propTypes = {
@@ -13,9 +14,11 @@ export class Home extends Component {
   static defaultProps = {
     click: 0,
   }
-  static getInitialProps() {
-    return { props: 'plop' };
-  }
+  // array of action use for initialize app before render server
+  // function have arg renderProps
+  static initialProps = [
+    () => Action.setClick('ADD'),
+  ]
   constructor(props, context) {
     super(props, context);
     this.handler = this.handler.bind(this);
@@ -28,8 +31,9 @@ export class Home extends Component {
     const { t } = this.props;
     return (
       <div>
-        <Link to="Lol">{t('hello')}</Link>
-        <p>{'Nb of click'} {this.props.click}</p>
+        <Header />
+        <Link to="Lol">{t('lol')}</Link>
+        <p>{t('number_of_click')} {this.props.click}</p>
         <a
           href="" onClick={(e) => {
             e.preventDefault();
