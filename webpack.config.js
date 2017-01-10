@@ -12,7 +12,7 @@ var extractSass = new ExtractTextPlugin('main.min.css');
 var appExport = {
   devtool: 'eval',
   entry: [
-    APP_DIR + '/main.js',
+    APP_DIR + '/main.jsx',
     CSS_DIR + '/app.scss',
     'webpack/hot/only-dev-server',
     'webpack-dev-server/client?http://localhost:4000'
@@ -21,7 +21,7 @@ var appExport = {
       // path: DIST_DIR,
       filename: '[name].bundle.min.js',
       path: path.join(__dirname, 'src/dist/'),
-      publicPath: '/src/dist/',
+      publicPath: '/dist/',
       chunkFilename: 'chunk[id].[chunkhash].js',
   },
   devServer:{

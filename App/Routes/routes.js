@@ -1,5 +1,6 @@
-if (typeof require.ensure !== 'function') require.ensure = (d, c) => c(require);
 import App from '../App';
+
+if (typeof require.ensure !== 'function') require.ensure = (d, c) => c(require);
 
 export default {
   component: App,
@@ -20,5 +21,13 @@ export default {
         });
       },
     },
-  ]
+    {
+      path: '/Lol',
+      getComponent(location, cb) {
+        require.ensure([], () => {
+          cb(null, require('../Components/Lol').default); // eslint-disable-line
+        });
+      },
+    },
+  ],
 };

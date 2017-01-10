@@ -1,0 +1,23 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true,
+   },
+   "ecmaFeatures": {
+    "js": true,
+    "es6": true,
+    "classes": true,
+   },
+   "rules": {
+     "no-underscore-dangle": 0,
+     "comma-dangle": [1, "always-multiline"],
+     "max-len": [1, 180, 4],
+     "arrow-body-style": [0],
+     "no-param-reassign": [2, { "props": false }],
+     "guard-for-in": 0,
+     "react/forbid-prop-types": [off]
+   },
+}

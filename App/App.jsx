@@ -1,12 +1,15 @@
-import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
-import DevTools from './Components/DevTools';
+import React, { PropTypes } from 'react';
+
 const App = ({ children }) => {
   return (
     <div>
       {children}
     </div>
   );
+};
+
+App.propTypes = {
+  children: PropTypes.object.isRequired,
 };
 
 export default App;

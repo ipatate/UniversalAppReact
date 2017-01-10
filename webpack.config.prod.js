@@ -4,22 +4,22 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 var DIST_DIR = path.resolve(__dirname, 'src/dist');
 var SRC_DIR = path.resolve(__dirname, 'src');
-var APP_DIR = path.resolve(__dirname, 'src/app');
+var APP_DIR = path.resolve(__dirname, 'App/');
 var CSS_DIR = path.resolve(__dirname, 'src/css');
 
-var extractFonts = new ExtractTextPlugin('fonts.min.css');
+// var extractFonts = new ExtractTextPlugin('fonts.min.css');
 var extractSass = new ExtractTextPlugin('main.min.css');
 var appExport = {
-  devtool: 'eval',
+  devtool: 'cheap-module-source-map',
   entry: [
-    SRC_DIR + '/main.js',
+    APP_DIR + '/main.jsx',
     CSS_DIR + '/app.scss',
   ],
   output: {
       // path: DIST_DIR,
       filename: '[name].bundle.min.js',
       path: path.join(__dirname, 'src/dist/'),
-      publicPath: '/src/dist/',
+      publicPath: '/dist/',
       chunkFilename: 'chunk[id].[chunkhash].js',
   },
   devServer:{
@@ -36,8 +36,9 @@ var appExport = {
       loaders: [
           {
             test : /\.jsx?/,
-            include : SRC_DIR,
-              loaders: ['react-hot-loader','babel-loader'],
+            include : APP_DIR,
+            loaders: ['react-hot-loader','babel-loader'],
+            compact: true,
           },
           // {
           //   test: /(font)*\.css$/,
@@ -55,8 +56,27 @@ var appExport = {
   },
   plugins: [
     new CommonsChunkPlugin({ name:  'main' }),
-    extractFonts,
-    extractSass
+    // extractFonts,
+    extractSass,
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
+      output: {
+        comments: false,
+      },
+      compressor: {
+        warnings: false,
+      },
+      compress: {
+        // supresses warnings, usually from module minification
+        warnings: false,
+      },
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production'),
+      }
+    }),
   ]
 };
 

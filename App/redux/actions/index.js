@@ -1,5 +1,5 @@
 // import { checkStatus } from '../../../lib/fetch';
-import fetch from 'isomorphic-fetch';
+// import fetch from 'isomorphic-fetch';
 import * as ActionTypes from '../constants/';
 
 export function updateClick(value) {
@@ -14,12 +14,12 @@ export function setClick(action) {
     const state = getState();
     let newClick = state.click;
     if (action === 'ADD') {
-      newClick = newClick + 1;
+      newClick += 1;
     } else if (action === 'REMOVE') {
       newClick = newClick > 0 ? newClick - 1 : newClick;
     }
     return dispatch(updateClick(newClick));
-  }
+  };
 }
 
 // export function getMDForCms(page, renderProps = {}) {
