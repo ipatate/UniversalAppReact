@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node_modules/.bin/jest",
-    "clean": "rimraf src/dist",
+    "clean": "rimraf public/dist",
     "build": "yarn run clean && webpack --progress -p --config webpack.config.prod.js",
     "dev": "yarn run clean && webpack-dev-server --port 4000  --inline",
     "dev:server": "yarn run clean && NODE_ENV=development node webpack-dev-server.babel.js",
@@ -26,6 +26,7 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-react-optimize": "^1.0.1",
+    "babel-preset-stage-1": "^6.16.0",
     "css-loader": "^0.26.1",
     "eslint": "^3.13.1",
     "eslint-config-airbnb": "^14.0.0",
@@ -41,7 +42,9 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
+    "es6-promise": "^4.0.5",
     "express": "^4.14.0",
+    "i18next": "^4.2.0",
     "isomorphic-fetch": "^2.2.1",
     "nodemon": "^1.11.0",
     "preact": "^7.1.0",
@@ -49,8 +52,10 @@
     "pug": "^2.0.0-beta6",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
+    "react-i18next": "^2.0.0",
     "react-redux": "^5.0.1",
     "react-router": "^3.0.0",
+    "react-router-scroll": "^0.4.1",
     "redux": "^3.6.0",
     "redux-devtools": "^3.3.1",
     "redux-devtools-dock-monitor": "^1.1.1",

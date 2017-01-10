@@ -2,10 +2,10 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
-var DIST_DIR = path.resolve(__dirname, 'src/dist');
-var SRC_DIR = path.resolve(__dirname, 'src');
+var DIST_DIR = path.resolve(__dirname, 'public/dist');
+var SRC_DIR = path.resolve(__dirname, 'public');
 var APP_DIR = path.resolve(__dirname, 'App/');
-var CSS_DIR = path.resolve(__dirname, 'src/css');
+var CSS_DIR = path.resolve(__dirname, 'public/css');
 
 // var extractFonts = new ExtractTextPlugin('fonts.min.css');
 var extractSass = new ExtractTextPlugin('main.min.css');
@@ -18,7 +18,7 @@ var appExport = {
   output: {
       // path: DIST_DIR,
       filename: '[name].bundle.min.js',
-      path: path.join(__dirname, 'src/dist/'),
+      path: path.join(__dirname, 'public/dist/'),
       publicPath: '/dist/',
       chunkFilename: 'chunk[id].[chunkhash].js',
   },

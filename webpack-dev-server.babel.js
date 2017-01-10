@@ -18,12 +18,3 @@ new WebpackDevServer(webpack(config), {
     shell.exec('"./node_modules/.bin/nodemon" index.js -e js,jsx,pug', function () {});
     console.log('Webpack Dev Server listening on port 4000');
 });
-
-// var server = new WebpackDevServer(webpack(config), {
-//   // webpack-dev-server options
-//   publicPath: config.output.publicPath,
-//   hot: true,
-//   stats: { colors: true },
-// });
-//
-// server.listen(4000, "localhost", function() {});

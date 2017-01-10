@@ -1,15 +1,16 @@
-var express = require('express');
-var app = express();
+const express = require('express');
 
-var gmRenderReact = require('./lib/gmRenderReact').default;
+const app = express();
 
-app.use(express.static('src'));
+const gmRenderReact = require('./lib/gmRenderReact').default;
+
+app.use(express.static('public'));
 
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'pug');
 
 app.get('/*', gmRenderReact);
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.listen(3000, () => {
+  console.log('Example app listening on port 3000!');// eslint-disable-line
 });

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { translate } from 'react-i18next';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import * as Action from '../redux/actions/';
@@ -6,6 +7,7 @@ import * as Action from '../redux/actions/';
 export class Home extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
+    t: PropTypes.func.isRequired,
     click: PropTypes.number,
   }
   static defaultProps = {
@@ -23,9 +25,10 @@ export class Home extends Component {
     dispatch(Action.setClick(action));
   }
   render() {
+    const { t } = this.props;
     return (
       <div>
-        <Link to="Lol">Lol</Link>
+        <Link to="Lol">{t('hello')}</Link>
         <p>{'Nb of click'} {this.props.click}</p>
         <a
           href="" onClick={(e) => {
@@ -51,4 +54,4 @@ function mapStateToProps(store) {
   };
 }
 
-export default connect(mapStateToProps)(Home);
+export default translate()(connect(mapStateToProps)(Home));
