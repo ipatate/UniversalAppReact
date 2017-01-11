@@ -8,13 +8,13 @@ yarn install
 
 for dev:
 
-yarn dev:server
-// for show devtools redux
-yarn dev:server:devtools
-open http://localhost:4000/
+yarn dev:server  
+// for show devtools redux  
+yarn dev:server:devtools  
+open http://localhost:4000/  
 
 for prod:
 
-yarn build
-yarn start
-open http://localhost:3000/
+yarn build  
+yarn start  
+open http://localhost:3000/  
