@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
-import { persistState } from 'redux-devtools';
+// import { persistState } from 'redux-devtools';
 import thunk from 'redux-thunk';
 import * as rootReducer from '../reducers';
-import DevTools from '../../Components/DevTools';
+// import DevTools from '../../Components/DevTools';
 
 export function configureStore(initialState = {}) {
   let finalCreateStore;
@@ -10,8 +10,8 @@ export function configureStore(initialState = {}) {
   if (process.env.CLIENT) {
     finalCreateStore = compose(
       applyMiddleware(thunk)
-      , persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
-      , DevTools.instrument()
+      // , persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
+      // , DevTools.instrument()
     )(createStore);
   } else {
     finalCreateStore = applyMiddleware(thunk)(createStore);

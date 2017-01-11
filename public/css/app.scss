@@ -1,16 +1,9 @@
-body {
-  background: #f8f8f8;
-  font-family: "Roboto Condensed";
-  a {
-    color: blue;
-  }
-}
-button {
-  border: 1px solid black;
-  background: #ccc;
-  padding: .3rem 1rem;
-  border-radius: 3px;
-}
-header {
-  min-height: 50px;
-}
+@import 'vars';
+@import 'font';
+@import "reset";
+@import "./mixins/_global";
+@import "./mixins/_shadows";
+@import "./mixins/_flexbox";
+@import "./mixins/_transform";
+
+@import "global";

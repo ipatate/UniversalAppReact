@@ -1,0 +1,195 @@
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# body
+# content
+# header
+# posts list
+# post page
+# loader
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# body
+--------------------------------------------------------------*/
+
+html {
+    box-sizing: border-box;
+    font-family: sans-serif;
+  	-webkit-text-size-adjust: 100%;
+  	-ms-text-size-adjust:     100%;
+}
+body {
+  font-size: 16px;
+	font-size: 1rem;
+	line-height: 1.5;
+  background-color:#F9F9F9;
+  color:#4a4949;
+  font-family: $family;
+  @include flexbox;
+  @include flex-direction(column);
+  @include justify-content(flex-start);
+  min-height: 100vh;
+}
+/*--------------------------------------------------------------
+# content
+--------------------------------------------------------------*/
+.content {
+  @include flexbox;
+  @include flex-direction(column);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  max-width: $max-width;
+}
+/*--------------------------------------------------------------
+# header
+--------------------------------------------------------------*/
+header {
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(center);
+  @include flex-wrap(nowrap);
+  background: #fff;
+  height: 80px;
+  padding: .5rem;
+  @include matShadow;
+}
+.gm-header__content {
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(center);
+  @include flex-wrap(nowrap);
+  width: 100%;
+  max-width: 60rem;
+  h1 {
+    @include flex(1);
+    font-size: 1.4rem;
+    a {
+      color: #333;
+      text-decoration: none;
+    }
+  }
+}
+.gm-header__lang {
+  button {
+    margin: 0 .5rem;
+    padding: .2rem .5rem;
+    background: #eee;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+  }
+}
+/*--------------------------------------------------------------
+# posts list
+--------------------------------------------------------------*/
+
+.gm-posts__reload {
+  @include flexbox;
+  @include flex-direction(row);
+  @include align-items(center);
+  @include justify-content(flex-end);
+  padding: .5rem;
+}
+.gm-posts__reload--button {
+  margin: 0 .5rem;
+  padding: .2rem .5rem;
+  background: #eee;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  text-decoration: none;
+  color: #333;
+}
+
+.gm-posts__list {
+
+}
+
+.gm-posts__element {
+  @include flexbox;
+  @include flex-direction(column);
+  @include align-items(flex-start);
+  max-width: 100%;
+  margin: 1rem 0;
+  padding: .5rem;
+  border-top: 1px solid #eee;
+}
+
+.gm-posts__element--title {
+  font-size: 1.4rem;
+  a {
+    color: #333;
+  }
+}
+
+.gm-posts__element--body {
+  padding: .5rem 0;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.gm-posts__element--more {
+  @include align-self(flex-end);
+  margin: 0 .5rem;
+  padding: .2rem .5rem;
+  background: #999;
+  border-radius: 3px;
+  border: none;
+  text-decoration: none;
+  color: #fff;
+}
+
+/*--------------------------------------------------------------
+# post page
+--------------------------------------------------------------*/
+
+.gm-post__back {
+  @include flexbox;
+  @include flex-direction(row);
+  @include align-items(center);
+  @include justify-content(flex-start);
+  padding: .5rem;
+}
+.gm-post__content {
+  @include flexbox;
+  @include flex-direction(column);
+  @include align-items(flex-start);
+  margin: 1rem 0;
+  padding: .5rem;
+  max-width: 100%;
+}
+.gm-post__content--title {
+  font-size: 1.6rem;
+  width: 100%;
+}
+
+.gm-post__content--body {
+  padding: .5rem 0;
+  color: #666;
+  margin: .5rem 0 1rem 0;
+  width: 100%;
+  font-size: 1.1rem;
+}
+
+/*--------------------------------------------------------------
+# loader
+--------------------------------------------------------------*/
+.gm-loader__container {
+  @include flexbox;
+  @include flex-direction(row);
+  @include align-items(center);
+  @include justify-content(center);
+}
+.gm-loader__load {
+    border: 10px solid #f3f3f3; /* Light grey */
+    border-top: 10px solid #bbb; /* grey */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

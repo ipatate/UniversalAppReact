@@ -7,19 +7,29 @@ const initLang = function initLang() {
     .init({
       lngs: ['fr', 'en'],
       lng: 'fr',
+      ns: ['common'],
+      defaultNS: 'common',
       resources: {
         fr: {
-          translation: {
-            lol: 'aller sur Lol',
-            number_of_click: 'Nombre de click',
+          common: {
+            header_title: 'Mon super blog',
+            posts_reload: 'recharger les articles',
+            back_list: 'Retour à la liste',
+            read_more: 'Lire la suite',
           },
         },
         en: {
-          translation: {
-            lol: 'go to Lol',
-            number_of_click: 'Number of click',
+          common: {
+            header_title: 'My super blog',
+            posts_reload: 'reload posts',
+            back_list: 'Back to list',
+            read_more: 'Read more',
           },
         },
+      },
+      parseMissingKeyHandler: (key) => {
+        console.log('missing translate for: ', key);// eslint-disable-line
+        return key;
       },
     },
     (err) => {

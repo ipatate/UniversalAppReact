@@ -22,10 +22,10 @@ export default {
       },
     },
     {
-      path: '/Lol',
+      path: '/Post/:id',
       getComponent(location, cb) {
         require.ensure([], () => {
-          cb(null, require('../Components/Lol').default); // eslint-disable-line
+          cb(null, require('../Components/Post').default); // eslint-disable-line
         });
       },
     },

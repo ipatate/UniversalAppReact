@@ -1,0 +1,24 @@
+@mixin width-calc($value) {
+  width: -webkit-calc($value);
+  width: -moz-calc($value);
+  width: calc($value);
+}
+
+@mixin height-calc($value) {
+  height: -webkit-calc($value);
+  height: -moz-calc($value);
+  height: calc($value);
+}
+
+@mixin retina-bg($img, $size) {
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (min--moz-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2/1),
+  only screen and (min-device-pixel-ratio: 2),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 2dppx) {
+    background: url($img) no-repeat;
+    background-size: $size;
+  }
+}

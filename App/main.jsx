@@ -8,21 +8,21 @@ import { I18nextProvider } from 'react-i18next';
 import routes from './Routes/routes';
 import { configureStore } from './redux/store/configureStore';
 import initLang from './lib/i18n';
-
+import ArrayFind from './lib/Array_find';
 require('es6-promise').polyfill();
 
 const history = browserHistory;
 const store = configureStore(window.__INITIAL_STATE__);
-let rootInstance = null;
 
 document.addEventListener('DOMContentLoaded', () => {
+  ArrayFind();
   return initLang().then((i18n) => {
     match({ history, routes }, (error, redirectLocation, renderProps) => {
       const changeLanguage = (lg) => { i18n.changeLanguage(lg); };
       function createWithDefaultProps(Component, props) {
         return <Component {...props} changeLanguage={changeLanguage} />;
       }
-      rootInstance = render(
+      render(
         <I18nextProvider t={i18n.t} i18n={i18n}>
           <Provider store={store}>
             <Router
@@ -37,10 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
         , document.getElementById('app'));
     });
     if (process.env.NODE_ENV !== 'production') {
-      require('../public/css/app.scss'); // eslint-disabled-line
+      require('../public/css/app.scss'); // eslint-disable-line
       // open popup devtool
       if (process.env.DEV_TOOLS) {
-        const showDevTools = require('./lib/showDevTools').default; // eslint-disabled-line
+        const showDevTools = require('./lib/showDevTools').default; // eslint-disable-line
         showDevTools(store);
       }
     }
