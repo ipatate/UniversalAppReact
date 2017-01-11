@@ -5,18 +5,12 @@ var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 var DIST_DIR = path.resolve(__dirname, 'public/dist');
 var SRC_DIR = path.resolve(__dirname, 'public');
 var APP_DIR = path.resolve(__dirname, 'App/');
-var CSS_DIR = path.resolve(__dirname, 'public/css');
-
-var extractSass = new ExtractTextPlugin('main.min.css');
 var appExport = {
-  devtool: 'eval',
+  devtool: 'inline-source-map',
   entry: [
     APP_DIR + '/main.jsx',
-    CSS_DIR + '/app.scss',
-    'webpack/hot/dev-server',
-    'webpack-hot-middleware/client'
-    // 'webpack/hot/only-dev-server',
-    // 'webpack-dev-server/client?http://localhost:3000'
+    'webpack/hot/only-dev-server',
+    'webpack-dev-server/client?http://localhost:4000'
   ],
   output: {
       // path: DIST_DIR,
@@ -44,19 +38,19 @@ var appExport = {
           },
           {
             test: /\.scss$/,
-            loader: extractSass.extract("style-loader", "css-loader!sass-loader?includePaths[]=" + path.resolve(__dirname, "./public/css/") )
+            loaders: ["style-loader", "css-loader", "sass-loader?includePaths[]=" + path.resolve(__dirname, "./public/css/")],
           },
       ]
   },
   plugins: [
     new CommonsChunkPlugin({ name:  'main' }),
     new webpack.HotModuleReplacementPlugin(),
-    extractSass,
     new webpack.DefinePlugin({
       'process.env': {
         CLIENT: JSON.stringify(true),
         NODE_ENV: JSON.stringify('development'),
-        BABEL_ENV: JSON.stringify('development/client')
+        BABEL_ENV: JSON.stringify('development/client'),
+        DEV_TOOLS: JSON.stringify(process.env.DEV_TOOLS || false),
       }
     })
   ]

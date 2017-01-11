@@ -3,35 +3,42 @@ import { translate } from 'react-i18next';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import * as Action from '../redux/actions/';
-import Header from './Header';
 
 export class Home extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     t: PropTypes.func.isRequired,
     click: PropTypes.number,
+    posts: PropTypes.array,
   }
   static defaultProps = {
     click: 0,
+    posts: [],
   }
   // array of action use for initialize app before render server
   // function have arg renderProps
   static initialProps = [
     () => Action.setClick('ADD'),
+    // () => Action.getPosts(),
   ]
   constructor(props, context) {
     super(props, context);
     this.handler = this.handler.bind(this);
+  }
+  componentDidMount() {
+    const { dispatch, posts } = this.props;
+    // if (posts.length === 0) {
+    //   dispatch(Action.getPosts());
+    // }
   }
   handler(action) {
     const { dispatch } = this.props;
     dispatch(Action.setClick(action));
   }
   render() {
-    const { t } = this.props;
+    const { t, posts } = this.props;
     return (
       <div>
-        <Header />
         <Link to="Lol">{t('lol')}</Link>
         <p>{t('number_of_click')} {this.props.click}</p>
         <a
@@ -47,6 +54,11 @@ export class Home extends Component {
           }}
         >Remove
         </a>
+        {posts.map((post) => {
+          return (
+            <b>{post.title.rendered}</b>
+          );
+        })}
       </div>
     );
   }
@@ -55,6 +67,7 @@ export class Home extends Component {
 function mapStateToProps(store) {
   return {
     click: store.click,
+    posts: store.posts,
   };
 }
 

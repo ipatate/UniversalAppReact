@@ -6,6 +6,11 @@ body {
   }
 }
 button {
-  border: 1px solid red;
-
+  border: 1px solid black;
+  background: #ccc;
+  padding: .3rem 1rem;
+  border-radius: 3px;
+}
+header {
+  min-height: 50px;
 }

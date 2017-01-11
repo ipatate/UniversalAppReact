@@ -9,4 +9,5 @@ html(lang= lg)
       script(type="text/javascript").
         window.__INITIAL_STATE__ = !{initialState};
   script(type="text/javascript", src="/dist/main.bundle.min.js", charset="utf-8")
-  link(rel="stylesheet",href="/dist/main.min.css")
+  if process.env.NODE_ENV === 'production'
+    link(rel="stylesheet",href="/dist/main.min.css")

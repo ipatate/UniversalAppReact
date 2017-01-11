@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import DevTools from './Components/DevTools';
+import DevTools from '../Components/DevTools';
 
 // open popup after load
 export default function showDevTools(store) {

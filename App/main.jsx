@@ -7,7 +7,6 @@ import { useScroll } from 'react-router-scroll';
 import { I18nextProvider } from 'react-i18next';
 import routes from './Routes/routes';
 import { configureStore } from './redux/store/configureStore';
-// import showDevTools from './lib/showDevTools';
 import initLang from './lib/i18n';
 
 require('es6-promise').polyfill();
@@ -37,8 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
         , document.getElementById('app'));
     });
     if (process.env.NODE_ENV !== 'production') {
+      require('../public/css/app.scss'); // eslint-disabled-line
       // open popup devtool
-      // showDevTools(store);
+      if (process.env.DEV_TOOLS) {
+        const showDevTools = require('./lib/showDevTools').default; // eslint-disabled-line
+        showDevTools(store);
+      }
     }
   });
 });

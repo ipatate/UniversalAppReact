@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import Header from './Components/Header';
 
 class App extends Component {
   static propTypes = {
@@ -20,6 +21,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Header />
         <div>
           <button onClick={e => this.changeLanguage(e, 'fr')}>fr</button>{'|'}
           <button onClick={e => this.changeLanguage(e, 'en')}>en</button>

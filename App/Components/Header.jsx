@@ -3,7 +3,7 @@ import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
 import * as Action from '../redux/actions/';
 
-export class Header extends Component {
+class Header extends Component {
   static propTypes = {
     // dispatch: PropTypes.func.isRequired,
     t: PropTypes.func.isRequired,
@@ -16,9 +16,9 @@ export class Header extends Component {
   render() {
     const { t } = this.props;
     return (
-      <div>
+      <header>
         {t('header')}
-      </div>
+      </header>
     );
   }
 }
