@@ -10,7 +10,7 @@
     "dev": "yarn run clean && webpack-dev-server --port 4000  --inline",
     "dev:server": "yarn run clean && NODE_ENV=development node webpack-dev-server.babel.js",
     "dev:server:devtools": "yarn run clean && NODE_ENV=development DEV_TOOLS=true node webpack-dev-server.babel.js",
-    "build-storybook": "build-storybook"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",

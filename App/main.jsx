@@ -13,6 +13,7 @@ require('es6-promise').polyfill();
 
 const history = browserHistory;
 const store = configureStore(window.__INITIAL_STATE__);
+let rootInstance = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   return initLang().then((i18n) => {
@@ -21,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
       function createWithDefaultProps(Component, props) {
         return <Component {...props} changeLanguage={changeLanguage} />;
       }
-      render(
+      rootInstance = render(
         <I18nextProvider t={i18n.t} i18n={i18n}>
           <Provider store={store}>
             <Router

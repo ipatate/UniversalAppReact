@@ -11,9 +11,9 @@ var appExport = {
     APP_DIR + '/main.jsx',
     'webpack/hot/only-dev-server',
     'webpack-dev-server/client?http://localhost:4000'
+    // 'webpack-hot-middleware/client',
   ],
   output: {
-      // path: DIST_DIR,
       filename: '[name].bundle.min.js',
       path: path.join(__dirname, 'public/dist/'),
       publicPath: '/dist/',
@@ -24,10 +24,10 @@ var appExport = {
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
-    "alias": {
-      "react": "preact-compat",
-      "react-dom": "preact-compat"
-    }
+    // "alias": {
+    //   "react": "preact-compat",
+    //   "react-dom": "preact-compat"
+    // }
   },
   module: {
       loaders: [
