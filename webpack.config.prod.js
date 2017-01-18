@@ -38,7 +38,7 @@ var appExport = {
           {
             test : /\.jsx?/,
             include : APP_DIR,
-            use: ['react-hot-loader','babel-loader'],
+            use: ['babel-loader'],
           },
           {
             test: /\.scss$/,

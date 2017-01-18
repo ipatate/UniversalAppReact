@@ -9,6 +9,7 @@ var appExport = {
   devtool: 'inline-source-map',
   entry: [
     APP_DIR + '/main.jsx',
+    'react-hot-loader/patch',
     'webpack/hot/only-dev-server',
     'webpack-dev-server/client?http://localhost:4000'
     // 'webpack-hot-middleware/client',
@@ -34,7 +35,7 @@ var appExport = {
           {
             test : /\.jsx?/,
             include : APP_DIR,
-            use: ['react-hot-loader','babel-loader'],
+            use: ['babel-loader'],
           },
           {
             test: /\.scss$/,
