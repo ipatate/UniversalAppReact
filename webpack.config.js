@@ -23,22 +23,22 @@ var appExport = {
     contentBase: __dirname,
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
     // "alias": {
     //   "react": "preact-compat",
     //   "react-dom": "preact-compat"
     // }
   },
   module: {
-      loaders: [
+      rules: [
           {
             test : /\.jsx?/,
             include : APP_DIR,
-              loaders: ['react-hot-loader','babel-loader'],
+            use: ['react-hot-loader','babel-loader'],
           },
           {
             test: /\.scss$/,
-            loaders: ["style-loader", "css-loader", "sass-loader?includePaths[]=" + path.resolve(__dirname, "./public/css/")],
+            use: ["style-loader", "css-loader", "sass-loader?includePaths[]=" + path.resolve(__dirname, "./public/css/")],
           },
       ]
   },

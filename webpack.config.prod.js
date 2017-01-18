@@ -7,7 +7,9 @@ var SRC_DIR = path.resolve(__dirname, 'public');
 var APP_DIR = path.resolve(__dirname, 'App/');
 var CSS_DIR = path.resolve(__dirname, 'public/css');
 
-var extractSass = new ExtractTextPlugin('main.min.css');
+var extractSass = new ExtractTextPlugin({
+  filename: 'main.min.css'
+});
 var appExport = {
   devtool: 'cheap-module-source-map',
   entry: [
@@ -25,40 +27,39 @@ var appExport = {
     contentBase: __dirname,
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
     // "alias": {
     //   "react": "preact-compat",
     //   "react-dom": "preact-compat"
     // }
   },
   module: {
-      loaders: [
+      rules: [
           {
             test : /\.jsx?/,
             include : APP_DIR,
-            loaders: ['react-hot-loader','babel-loader'],
-            compact: true,
+            use: ['react-hot-loader','babel-loader'],
           },
           {
             test: /\.scss$/,
-            loader: extractSass.extract("style-loader", "css-loader!sass-loader?includePaths[]=" + path.resolve(__dirname, "./public/css/") )
+            loader: ExtractTextPlugin.extract({
+              fallbackLoader: "style-loader",
+              loader: "css-loader!sass-loader?includePaths[]=" + path.resolve(__dirname, "./public/css/"),
+              publicPath: DIST_DIR
+            })
           },
       ]
   },
   plugins: [
     new CommonsChunkPlugin({ name:  'main' }),
     extractSass,
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
-      minimize: true,
+      // minimize: true,
+      sourceMap: true,
       output: {
         comments: false,
       },
       compressor: {
-        warnings: false,
-      },
-      compress: {
-        // supresses warnings, usually from module minification
         warnings: false,
       },
     }),
