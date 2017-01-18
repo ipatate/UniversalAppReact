@@ -29,5 +29,13 @@ export default {
         });
       },
     },
+    {
+      path: '*',
+      getComponent(location, cb) {
+        require.ensure([], () => {
+          cb(null, require('../Components/Page404').default); // eslint-disable-line
+        });
+      },
+    },
   ],
 };
